@@ -1,22 +1,27 @@
-import React from "react";
-import "./scrollup.css"
+import { useEffect, useCallback } from "react";
+import { Icon } from "@iconify/react";
+import "./scrollup.css";
 
-export default function ScrollUp () {
-    window.addEventListener("scroll", function () {
-        const scrollUp = document.querySelector(".scrollup")
+export default function ScrollUp() {
+  const handleScroll = useCallback(() => {
+    const scrollUp = document.querySelector(".scrollup");
+    if (window.scrollY >= 560) {
+      scrollUp?.classList.add("display-scroll");
+    } else {
+      scrollUp?.classList.remove("display-scroll");
+    }
+  }, []);
 
-        // when the scroll is higher than 560vh add the show class
-        if (this.scrollY >= 560){
-            scrollUp.classList.add("display-scroll")
-        }
-        else {
-            scrollUp.classList.remove("display-scroll")
-        }
-    })
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
 
-    return (
-        <a href="#" className="scrollup">
-            <i className="uil uil-arrow-up scrollup__icon"></i>
-        </a>
-    )
+  return (
+    <a href="#" className="scrollup">
+      <Icon icon="uil:arrow-up" className="scrollup__icon" />
+    </a>
+  );
 }
