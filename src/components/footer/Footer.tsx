@@ -1,70 +1,49 @@
-import React from "react";
-import "./footer.css"
+import { Icon } from "@iconify/react";
+import "./footer.css";
 
-export default function Footer () {
-    return (
-        <footer className="footer">
-            <div className="footer__container container">
-                <h1 className="footer__title">Buldenko</h1>
+const socialLinks = [
+  {
+    href: "https://www.instagram.com/walderwin/",
+    icon: "bxl:instagram",
+    label: "Instagram",
+  },
+  {
+    href: "https://www.facebook.com/vladbuldenko",
+    icon: "bxl:facebook",
+    label: "Facebook",
+  },
+  { href: "https://github.com/vbuldenko", icon: "bxl:github", label: "GitHub" },
+];
 
-                <ul className="footer__list">
-                    <li>
-                        <a href="#about" className="footer__link">About</a>
-                    </li>
-
-                    <li>
-                        <a href="#portfolio" className="footer__link">Portfolio</a>
-                    </li>
-
-                    <li>
-                        <a href="#testimonials" className="footer__link">Testimonials</a>
-                    </li>
-                </ul>
-
-                <div className="footer__social">
-                    <a 
-                        href="https://www.instagram.com/walderwin/"
-                        className="footer__social-link"
-                        target="_blank"
-                    >
-                        <i class="bx bxl-instagram"></i>
-                    </a>
-
-                    <a
-                        href="https://www.facebook.com/vladbuldenko/"
-                        className="footer__social-link"
-                        target="_blank"
-                    >
-                        <i class="bx bxl-facebook"></i>
-                    </a>
-
-                    <a
-                        href="https://github.com/vbuldenko"
-                        className="footer__social-link"
-                        target="_blank"
-                    >
-                        <i class="bx bxl-github "></i>
-                    </a>
-
-                    <a
-                        href="https://twitter.com/walderviron"
-                        className="footer__social-link"
-                        target="_blank"
-                    >
-                        <i class="bx bxl-twitter"></i>
-                    </a>
-
-                    <a
-                        href="https://t.me/waldeviron"
-                        className="footer__social-link"
-                        target="_blank"
-                    >
-                        <i class='bx bxl-telegram'></i>
-                    </a>
-                </div>
-
-                <span className="footer__copy">&#169; Buldenko. All rights reserved</span>
-            </div>
-        </footer>
-    )
+export default function Footer() {
+  return (
+    <footer className="footer">
+      <div className="footer__container container">
+        <h1 className="footer__title">Buldenko</h1>
+        <ul className="footer__list">
+          {["about", "portfolio", "testimonials"].map((section) => (
+            <li key={section}>
+              <a href={`#${section}`} className="footer__link">
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div className="footer__social">
+          {socialLinks.map(({ href, icon, label }) => (
+            <a
+              key={href}
+              href={href}
+              className="footer__social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+            >
+              <Icon icon={icon} />
+            </a>
+          ))}
+        </div>
+      </div>
+    </footer>
+  );
 }
