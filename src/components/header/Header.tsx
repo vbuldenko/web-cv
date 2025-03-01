@@ -56,7 +56,13 @@ export default function Header() {
                   })}
                   onClick={() => setActiveNav(item.href)}
                 >
-                  <i className={`${item.icon} nav_:`}></i> {item.label}
+                  <Icon
+                    className="nav__icon"
+                    icon={item.icon}
+                    onClick={() => setToggle((prev) => !prev)}
+                  />
+
+                  {item.label}
                 </a>
               </li>
             ))}
