@@ -1,0 +1,13 @@
+.portfolio__container {
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    align-items: center;
+    justify-content: center;
+
+}
+
+.portfolio__content {
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+    background-color: var(--container-color);
+    box-shadow: var(--shadow);
+}
