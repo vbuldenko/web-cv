@@ -5,19 +5,19 @@ const projects = [
     title: "Kickstarter – landing page",
     demoLink: "https://vbuldenko.github.io/Kickstarter/",
     codeLink: "https://github.com/vbuldenko/landing-kickstarter",
-    imgSrc: "/images/kickstarter.png", // Replace with actual image path
+    imgSrc: "public/images/kickstarter.png", // Replace with actual image path
   },
   {
     title: "2048 Game – Sliding puzzle game",
     demoLink: "https://vbuldenko.github.io/js_2048_game/",
     codeLink: "https://github.com/vbuldenko/2048-js-game",
-    imgSrc: "/images/2048.png", // Replace with actual image path
+    imgSrc: "public/images/2048.png", // Replace with actual image path
   },
   {
     title: "Nice gadgets – Apple devices ecommerce SPA",
     demoLink: "https://vbuldenko.github.io/react_phone-catalog/",
     codeLink: "https://github.com/vbuldenko/Phone-catalog",
-    imgSrc: "/images/gadgets.png", // Replace with actual image path
+    imgSrc: "public/images/gadgets.png", // Replace with actual image path
   },
   {
     title: "Intensity – Full stack fitness studio app",
