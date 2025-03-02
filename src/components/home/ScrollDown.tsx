@@ -4,7 +4,7 @@ export default function ScrollDown() {
   return (
     <div className="home__scroll">
       <a href="#about" className="home__scroll-button">
-        <i className="uil uil-mouse-alt"></i>
+        <Icon icon="uil:mouse-alt" />
         <span className="home__scroll-name">Scroll Down</span>
         <Icon icon="uil:arrow-down" className="home__scroll-arrow" />
       </a>

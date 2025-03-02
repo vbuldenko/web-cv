@@ -2,6 +2,8 @@ import { Icon } from "@iconify/react";
 import Info from "./Info.js";
 import "./about.css";
 
+import vb1Image from "../../../public/images/vb1.jpg";
+
 export default function About() {
   return (
     <section className="about section" id="about">
@@ -9,11 +11,7 @@ export default function About() {
       <span className="section__subtitle">My introduction</span>
 
       <div className="about__container container grid">
-        <img
-          src="public/photos/vb1.jpg"
-          alt="about image"
-          className="about__img"
-        />
+        <img src={vb1Image} alt="about image" className="about__img" />
         <div className="about__data">
           <Info />
 

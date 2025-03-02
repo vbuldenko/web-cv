@@ -103,6 +103,7 @@
   color: var(--title-color);
   margin-left: 9.25rem;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   width: 150px;
 }
