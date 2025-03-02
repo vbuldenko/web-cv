@@ -3,6 +3,7 @@ import Info from "./Info.js";
 import "./about.css";
 
 import vb1Image from "../../../public/images/vb1.jpg";
+import CV from "../../../public/files/CV.Vladyslav Buldenko_Fullstack.pdf";
 
 export default function About() {
   return (
@@ -26,11 +27,7 @@ export default function About() {
             opportunities to further develop my skills and expand my knowledge.
           </p>
 
-          <a
-            download=""
-            href="/CV.Vladyslav Buldenko_Fullstack.pdf"
-            className="button button--flex"
-          >
+          <a download="" href={CV} className="button button--flex">
             Download CV
             <Icon icon="uil:import" />
           </a>
