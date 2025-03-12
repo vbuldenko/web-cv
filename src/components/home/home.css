@@ -54,7 +54,7 @@
 }
 
 .home__img {
-  background: url(../../assets/vb.png) center/cover no-repeat;
+  background: url(../../assets/images/vb.png) center/cover no-repeat;
   width: 300px;
   height: 300px;
   order: 1;
@@ -103,9 +103,11 @@
   color: var(--title-color);
   margin-left: 9.25rem;
   display: flex;
+  gap: 0.5rem;
   align-items: center;
-  flex-wrap: wrap;
-  width: 150px;
+  flex-direction: column;
+  justify-content: center;
+  width: max-content;
 }
 
 .home__scroll-name {
@@ -119,7 +121,7 @@
   font-size: 1.25rem;
   color: var(--title-color);
   animation: scroll 2s ease-in-out infinite;
-  margin-left: 40%;
+  /* margin-left: 40%; */
 }
 
 @keyframes scroll {

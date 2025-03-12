@@ -105,10 +105,10 @@
 }
 
 .contact__form-error {
+  width: 160px;
   position: absolute;
   bottom: -1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 0;
   font-size: var(--small-font-size);
   color: red;
 }

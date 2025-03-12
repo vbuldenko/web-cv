@@ -24,14 +24,14 @@
   --font-semi-bold: 600;
 
   /* Margins Bottom */
-  --mb-0-25: 0.25em;
-  --mb-0-5: 0.5em;
-  --mb-0-75: 0.75em;
-  --mb-1: 1em;
-  --mb-1-5: 1.5em;
-  --mb-2: 2em;
-  --mb-2-5: 2.5em;
-  --mb-3: 3em;
+  --mb-0-25: 0.25rem;
+  --mb-0-5: 0.5rem;
+  --mb-0-75: 0.75rem;
+  --mb-1: 1rem;
+  --mb-1-5: 1.5rem;
+  --mb-2: 2rem;
+  --mb-2-5: 2.5rem;
+  --mb-3: 3rem;
 
   /* z index */
   --z-tooltip: 10;
@@ -61,7 +61,7 @@
   --body-color: rgb(75, 92, 108);
   --active-color: rgba(222, 222, 149, 0.9);
   --container-color: rgb(43, 56, 69);
-  --shadow: 0 0 4px rgba(100, 255, 255, 0.2);
+  --shadow: 0 0 4px rgba(255, 255, 255, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {

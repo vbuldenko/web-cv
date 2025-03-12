@@ -1,49 +1,25 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import "./services.css";
+import { useTranslation } from "react-i18next";
 
 interface Service {
   icon: string;
-  title: string;
-  description: string;
-  details: string[];
+  category: string;
 }
 
 const services: Service[] = [
   {
     icon: "uil:web-grid",
-    title: "Web Application Development",
-    description: "Providing quality web applications to clients and companies.",
-    details: [
-      "Developing responsive and dynamic web applications.",
-      "Using modern JavaScript libraries and frameworks like React and Next.js.",
-      "Ensuring cross-browser compatibility and performance optimization.",
-      "Implementing best practices for security and scalability.",
-      "Continuous integration and deployment.",
-    ],
+    category: "app",
   },
   {
     icon: "uil:server-network",
-    title: "API Development and Integration",
-    description: "Providing robust API development and integration services.",
-    details: [
-      "Designing and developing RESTful APIs.",
-      "Integrating third-party APIs and services.",
-      "Ensuring secure and efficient data exchange.",
-      "Implementing authentication and authorization.",
-      "API documentation and testing.",
-    ],
+    category: "api",
   },
   {
     icon: "uil:database",
-    title: "Database Design and Management",
-    description:
-      "Providing comprehensive database design and management services.",
-    details: [
-      "Designing relational and non-relational databases.",
-      "Implementing data backup and recovery solutions.",
-      "Ensuring data integrity and security.",
-    ],
+    category: "db",
   },
 ];
 
@@ -54,6 +30,8 @@ interface ServiceModalProps {
 }
 
 function ServiceModal({ service, isOpen, onClose }: ServiceModalProps) {
+  const { t } = useTranslation();
+  console.log(t(`services.${service.category}.title`));
   return (
     <div
       className={isOpen ? "services__modal active-modal" : "services__modal"}
@@ -64,10 +42,18 @@ function ServiceModal({ service, isOpen, onClose }: ServiceModalProps) {
           className="services__modal-close"
           onClick={onClose}
         />
-        <h3 className="services__modal-title">{service.title}</h3>
-        <p className="services__modal-description">{service.description}</p>
+        <h3 className="services__modal-title">
+          {t(`services.${service.category}.title`)}
+        </h3>
+        <p className="services__modal-subtitle">
+          {t(`services.${service.category}.subtitle`)}
+        </p>
         <ul className="services__modal-services grid">
-          {service.details.map((detail, index) => (
+          {(
+            t(`services.${service.category}.details`, {
+              returnObjects: true,
+            }) as string[]
+          ).map((detail, index) => (
             <li className="services__modal-service" key={index}>
               <Icon icon="uil:check-circle" className="services__modal-icon" />
               <p className="services__modal-info">{detail}</p>
@@ -80,6 +66,7 @@ function ServiceModal({ service, isOpen, onClose }: ServiceModalProps) {
 }
 
 export default function Services() {
+  const { t } = useTranslation();
   const [activeModal, setActiveModal] = useState<number | null>(null);
 
   const toggleModal = (index: number | null) => {
@@ -88,8 +75,8 @@ export default function Services() {
 
   return (
     <section className="services section" id="services">
-      <h2 className="section__title">Services</h2>
-      <span className="section__subtitle">What I offer</span>
+      <h2 className="section__title">{t("services.title")}</h2>
+      <span className="section__subtitle">{t("services.subtitle")}</span>
 
       <div className="services__container container grid">
         {services.map((service, index) => (
@@ -97,12 +84,7 @@ export default function Services() {
             <div>
               <Icon icon={service.icon} className="services__icon" />
               <h3 className="services__title">
-                {service.title.split(" ").map((word, i) => (
-                  <span key={i}>
-                    {word}
-                    <br />
-                  </span>
-                ))}
+                {t(`services.${service.category}.title`)}
               </h3>
             </div>
 
@@ -110,7 +92,7 @@ export default function Services() {
               className="services__button"
               onClick={() => toggleModal(index)}
             >
-              View More
+              {t("services.viewBtn")}
               <Icon icon="uil:arrow-right" className="services__button-icon" />
             </span>
 

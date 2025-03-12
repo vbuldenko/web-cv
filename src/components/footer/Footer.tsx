@@ -21,7 +21,7 @@ export default function Footer() {
       <div className="footer__container container">
         <h1 className="footer__title">Buldenko</h1>
         <ul className="footer__list">
-          {["about", "portfolio", "testimonials"].map((section) => (
+          {["about", "portfolio"].map((section) => (
             <li key={section}>
               <a href={`#${section}`} className="footer__link">
                 {section.charAt(0).toUpperCase() + section.slice(1)}

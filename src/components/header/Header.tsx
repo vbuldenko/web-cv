@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import "./header.css";
 import Dropdown from "./dropdown/Dropdown.tsx";
 import ModeToggler from "./mode/ModeToggler.tsx";
+import { useTranslation } from "react-i18next";
 
 interface NavItem {
   href: string;
@@ -12,14 +13,15 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { href: "#home", icon: "uil:estate", label: "Home" },
-  { href: "#about", icon: "uil:user", label: "About" },
-  { href: "#skills", icon: "uil:file-alt", label: "Skills" },
-  { href: "#portfolio", icon: "uil:scenery", label: "Portfolio" },
-  { href: "#contact", icon: "uil:message", label: "Contact" },
+  { href: "#home", icon: "uil:estate", label: "home" },
+  { href: "#about", icon: "uil:user", label: "about" },
+  { href: "#skills", icon: "uil:file-alt", label: "skills" },
+  { href: "#portfolio", icon: "uil:scenery", label: "portfolio" },
+  { href: "#contact", icon: "uil:message", label: "contact" },
 ];
 
 export default function Header() {
+  const { t } = useTranslation();
   const [toggle, setToggle] = useState(false);
   const [activeNav, setActiveNav] = useState("#home");
 
@@ -62,7 +64,7 @@ export default function Header() {
                     onClick={() => setToggle((prev) => !prev)}
                   />
 
-                  {item.label}
+                  {t(`header.${item.label}`)}
                 </a>
               </li>
             ))}

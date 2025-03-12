@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 import clsx from "clsx";
 import "./qualification.css";
+import { useTranslation } from "react-i18next";
 
 interface QualificationData {
   title: string;
@@ -14,6 +15,12 @@ const educationData: QualificationData[] = [
     title: "Full-stack development",
     subtitle: "Mate academy. Full-stack developer course",
     calendar: "02.2024 - 2025",
+  },
+  {
+    title: "Full Stack Open",
+    subtitle:
+      "The University of Helsinki. Deep Dive Into Modern Web Development",
+    calendar: "06.2023 - 02.2024",
   },
   {
     title: "Fullstack Web Development",
@@ -45,7 +52,7 @@ const educationData: QualificationData[] = [
 
 const experienceData: QualificationData[] = [
   {
-    title: "Freelancer",
+    title: "Micro-SaaS freelancer",
     subtitle: "- Ukraine -",
     calendar: "06.2024 - Present",
   },
@@ -105,6 +112,7 @@ function QualificationSection({ data }: QualificationSectionProps) {
 
 export default function Qualification() {
   const [toggleState, setToggleState] = useState<number>(1);
+  const { t } = useTranslation();
 
   function toggleTab(index: number) {
     setToggleState(index);
@@ -112,8 +120,8 @@ export default function Qualification() {
 
   return (
     <section className="qualification section">
-      <h2 className="section__title">Qualification</h2>
-      <span className="section__subtitle">My personal journey</span>
+      <h2 className="section__title">{t("qualification.title")}</h2>
+      <span className="section__subtitle">{t("qualification.subtitle")}</span>
 
       <div className="qualification__container container">
         <div className="qualification__tabs">
@@ -124,7 +132,7 @@ export default function Qualification() {
             })}
           >
             <Icon icon="uil:graduation-cap" className="qualification__icon" />
-            Education
+            {t("qualification.education")}
           </div>
 
           <div
@@ -134,7 +142,7 @@ export default function Qualification() {
             })}
           >
             <Icon icon="uil:briefcase-alt" className="qualification__icon" />
-            Experience
+            {t("qualification.experience")}
           </div>
         </div>
 

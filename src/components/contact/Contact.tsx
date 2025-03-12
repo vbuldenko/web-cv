@@ -2,6 +2,7 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { Icon } from "@iconify/react";
 // import emailjs from "emailjs-com";
 import "./contact.css";
+import { useTranslation } from "react-i18next";
 
 interface ContactCardProps {
   icon: string;
@@ -10,40 +11,39 @@ interface ContactCardProps {
   label: string;
 }
 
-const ContactCard = ({ icon, title, href, label }: ContactCardProps) => (
-  <div className="contact__card">
-    <Icon icon={icon} className="contact__card-icon" />
-    <h3 className="contact__card-title">{title}</h3>
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="contact__button"
-    >
-      {label}
-      <Icon icon="bx:bx-right-arrow-alt" className="contact__button-icon" />
-    </a>
-  </div>
-);
-
+const ContactCard = ({ icon, title, href }: ContactCardProps) => {
+  const { t } = useTranslation();
+  return (
+    <div className="contact__card">
+      <Icon icon={icon} className="contact__card-icon" />
+      <h3 className="contact__card-title">{title}</h3>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="contact__button"
+      >
+        {t("contacts.write")}
+        <Icon icon="bx:bx-right-arrow-alt" className="contact__button-icon" />
+      </a>
+    </div>
+  );
+};
 const contactCards = [
   {
     icon: "bxl:gmail",
     title: "Email",
     href: "mailto:vladbuldenko@gmail.com",
-    label: "Write me",
   },
   {
     icon: "bxl:telegram",
     title: "Telegram",
     href: "https://t.me/waldeviron",
-    label: "Write me",
   },
   {
     icon: "bxl:facebook",
     title: "Facebook",
     href: "https://www.facebook.com/vladbuldenko/",
-    label: "Write me",
   },
 ];
 
@@ -54,6 +54,7 @@ interface FormData {
 }
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -79,11 +80,13 @@ export default function Contact() {
     const { email } = formData;
 
     if (!validateEmail(email)) {
-      setErrors({ email: "Invalid email address" });
+      setErrors({ email: t("contacts.invalid_email") });
       return;
     }
 
-    setErrors({ feature: "Not implemented yet" });
+    setErrors({
+      feature: t("contacts.not_implemented"),
+    });
 
     // emailjs
     //   .sendForm(
@@ -106,12 +109,12 @@ export default function Contact() {
 
   return (
     <section className="contact section" id="contact">
-      <h2 className="section__title">Get in touch</h2>
-      <span className="section__subtitle">Contact Me</span>
+      <h2 className="section__title">{t("contacts.title")}</h2>
+      <span className="section__subtitle">{t("contacts.subtitle")}</span>
 
       <div className="contact__container container grid">
         <div className="contact__content">
-          <h3 className="contact__title">Talk to me</h3>
+          <h3 className="contact__title">{t("contacts.talk_to_me")}</h3>
           <div className="contact__info">
             {contactCards.map((card) => (
               <ContactCard key={card.href} {...card} />
@@ -120,7 +123,7 @@ export default function Contact() {
         </div>
 
         <div className="contact__content">
-          <h3 className="contact__title">Write me your proposal</h3>
+          <h3 className="contact__title">{t("contacts.write_proposal")}</h3>
           <form className="contact__form" onSubmit={handleSubmit}>
             {["name", "email", "proposal"].map((field) => (
               <div
@@ -160,7 +163,7 @@ export default function Contact() {
               </div>
             ))}
             <button type="submit" className="button button--flex">
-              Send Message
+              {t("contacts.send_message")}
             </button>
           </form>
           {errors.feature && (
