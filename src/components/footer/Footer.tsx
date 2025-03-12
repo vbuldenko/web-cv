@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import "./footer.css";
+import { useTranslation } from "react-i18next";
 
 const socialLinks = [
   {
@@ -16,6 +17,7 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="footer">
       <div className="footer__container container">
@@ -24,7 +26,7 @@ export default function Footer() {
           {["about", "portfolio"].map((section) => (
             <li key={section}>
               <a href={`#${section}`} className="footer__link">
-                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {t(`header.${section}`)}
               </a>
             </li>
           ))}

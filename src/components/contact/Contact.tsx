@@ -3,12 +3,12 @@ import { Icon } from "@iconify/react";
 // import emailjs from "emailjs-com";
 import "./contact.css";
 import { useTranslation } from "react-i18next";
+import clsx from "clsx";
 
 interface ContactCardProps {
   icon: string;
   title: string;
   href: string;
-  label: string;
 }
 
 const ContactCard = ({ icon, title, href }: ContactCardProps) => {
@@ -128,9 +128,9 @@ export default function Contact() {
             {["name", "email", "proposal"].map((field) => (
               <div
                 key={field}
-                className={`contact__form-div ${
-                  field === "proposal" ? "contact__form-area" : ""
-                }`}
+                className={clsx("contact__form-div", {
+                  "contact__form-area": field === "proposal",
+                })}
               >
                 <label htmlFor={field} className="contact__form-tag">
                   {field}
@@ -140,7 +140,7 @@ export default function Contact() {
                     id={field}
                     name={field}
                     className="contact__form-input"
-                    placeholder={`Insert your ${field}`}
+                    placeholder={t("contacts.insert_proposal")}
                     cols={30}
                     rows={10}
                     value={formData[field as keyof FormData]}
@@ -152,7 +152,7 @@ export default function Contact() {
                     id={field}
                     name={field}
                     className="contact__form-input"
-                    placeholder={`Insert your ${field}`}
+                    placeholder={t(`contacts.insert_${field}`)}
                     value={formData[field as keyof FormData]}
                     onChange={handleChange}
                   />

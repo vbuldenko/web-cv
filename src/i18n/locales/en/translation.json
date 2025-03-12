@@ -86,9 +86,9 @@
     "name": "Name",
     "email": "Email",
     "proposal": "Proposal",
-    "insert_your_name": "Insert your name",
-    "insert_your_email": "Insert your email",
-    "insert_your_proposal": "Insert your proposal",
+    "insert_name": "Insert your name",
+    "insert_email": "Insert your email",
+    "insert_proposal": "Insert your proposal",
     "send_message": "Send Message",
     "invalid_email": "Invalid email address",
     "not_implemented": "Not implemented yet. Contact me using any social links mentioned previously!"
